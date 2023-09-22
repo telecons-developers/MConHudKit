@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'MConHudKit_Example' do
+  pod 'MConHudKit', :path => '../'
+
+  target 'MConHudKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
