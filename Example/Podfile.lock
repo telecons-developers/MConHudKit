@@ -1,0 +1,16 @@
+PODS:
+  - MConHudKit (0.1.0)
+
+DEPENDENCIES:
+  - MConHudKit (from `../`)
+
+EXTERNAL SOURCES:
+  MConHudKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MConHudKit: a71834376e590dac40567859c5767d99484566bb
+
+PODFILE CHECKSUM: 7ef1baed9f722f4ed5e1083e4fb21eff5564987f
+
+COCOAPODS: 1.12.1
