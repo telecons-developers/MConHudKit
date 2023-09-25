@@ -29,14 +29,16 @@ MConHudKit.shared.initialize(appKey: "appkey") { error in
 ## Scan Device
 ```ruby
 #ViewController.swift
-
-var list = [MConHudPeripheral]()
-override func viewDidLoad() {
-  super.viewDidLoad()
-  MConHudKit.shared.hudScanDelegate = self
-  MConHudKit.shared.startScanPeripheral(timeoutSec: 7)
+class ViewController: UIViewController {
+  var list = [MConHudPeripheral]()
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    MConHudKit.shared.hudScanDelegate = self
+    // timeoutSec 후 Scanner가 자동 종료 됩니다.
+    // timeoutSec에 nil을 전달하면 Scanner가 자동 종료 되지 않습니다.
+    MConHudKit.shared.startScanPeripheral(timeoutSec: 7)
+  }
 }
-
 extension ViewController: MConHudScanDelegate {
     func scanPeripheral(peripherals: [MConHudPeripheral]) {
         self.list = peripherals
