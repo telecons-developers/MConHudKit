@@ -36,7 +36,7 @@ MConHudKit.shared.initialize(appKey: "appkey") { error in
 ```
 
 ## Scan Device
-```ruby
+```swift
 #ViewController.swift
 class ViewController: UIViewController {
   override func viewDidLoad() {
