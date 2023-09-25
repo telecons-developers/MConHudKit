@@ -25,10 +25,7 @@ open class MConHudKit: NSObject {
     }
     
     public func initialize(appKey: String, completion: @escaping(MConHudKitError?)->()) {
-        //Bundle.main.bundleIdentifier
         let identifier = Bundle.main.bundleIdentifier
-        
-        
         core.authAppKey(appKey: appKey) { result in
             if(result) {
                 self.authStatus = true
@@ -40,9 +37,6 @@ open class MConHudKit: NSObject {
                 completion(.invalidAuthorization)
             }
         }
-        
-        
-        
     }
     
     public func startScanPeripheral(timeoutSec: Int?) {
