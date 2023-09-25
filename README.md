@@ -10,7 +10,7 @@
 MConHudKit is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
-```ruby
+```
 pod 'MConHudKit'
 ```
 
@@ -18,7 +18,7 @@ pod 'MConHudKit'
 
 Need Bluetooth Authorization
 Add in info.plist
-```ruby
+```
 Privacy - Bluetooth Always Usage Description
 Privacy - Bluetooth Peripheral Usage Description
 ```
@@ -67,7 +67,7 @@ extension ViewController: MConHudScanDelegate {
 }
 ```
 
-## Connect Device
+## Bluetooth Connect Device
 ```swift
 // peripheral is MConHudPeripheral
 MConHudKit.shared.connectPeripheral(peripheral: peripheral)
@@ -86,6 +86,23 @@ extension ViewController: MConHudScanDelegate {
     }
 }
 ```
+
+## Bluetooth Disconnect Device
+
+HUD 디바이스의 전원을 Off시키거나 아래 코드를 호출하면 블루투스 연결이 해제됩니다.
+```swift
+MConHudKit.shared.disconnectPeripheral(peripheral: peripheral)
+```
+
+연결이 해제되면 disconnectedPeripheral를 통해 연결 해제 신호를 받을 수 있습니다.
+```swift
+extension ViewController: MConHudScanDelegate {
+    func disconnectedPeripheral() {
+        print("disconnected")
+    }
+}
+```
+
 
 ## License
 
