@@ -5,12 +5,6 @@
 [![License](https://img.shields.io/cocoapods/l/MConHudKit.svg?style=flat)](https://cocoapods.org/pods/MConHudKit)
 [![Platform](https://img.shields.io/cocoapods/p/MConHudKit.svg?style=flat)](https://cocoapods.org/pods/MConHudKit)
 
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
-
 ## Installation
 
 MConHudKit is available through [CocoaPods](https://cocoapods.org). To install
@@ -20,9 +14,17 @@ it, simply add the following line to your Podfile:
 pod 'MConHudKit'
 ```
 
-## Author
+## Auth
 
-developers@telecons.co.kr, jsjung@telecons.co.kr
+```ruby
+MConHudKit.shared.initialize(appKey: "appkey") { error in
+  if let error = error {
+    print("authorization fail \(error
+    return
+  }
+  print("authorization success")
+}
+```
 
 ## License
 
