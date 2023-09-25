@@ -30,7 +30,6 @@ MConHudKit.shared.initialize(appKey: "appkey") { error in
 ```ruby
 #ViewController.swift
 class ViewController: UIViewController {
-  var list = [MConHudPeripheral]()
   override func viewDidLoad() {
     super.viewDidLoad()
     MConHudKit.shared.hudScanDelegate = self
@@ -41,11 +40,16 @@ class ViewController: UIViewController {
 }
 extension ViewController: MConHudScanDelegate {
     func scanPeripheral(peripherals: [MConHudPeripheral]) {
-        self.list = peripherals
+        peripherals.forEach { item in
+            print(item.name)    // Device Name
+            print(item.uuid)    // Device Identifier UUID
+            print(item.rssi)    // Device Bluetooth rssi
+            print(item.paired)  // Device Bluetooth Connect Status (Not BLE Connection)
+        }
     }
 
     func scanTimeOut() {
-        print("Scan Time out!")
+        print("Scan time out. Scan end.")
     }
 
     func connectPeripheralResult(peripheral: MConHudPeripheral) {
