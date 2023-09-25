@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MConHudKit'
-  s.version          = '0.1.1'
-  s.summary          = 'A short description of MConHudKit.'
+  s.version          = '0.1.2'
+  s.summary          = 'MConHudKit Library for iOS.'
   s.swift_version    = '5.0'
 
 # This description is used to generate tags and improve search results.
