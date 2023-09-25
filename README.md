@@ -26,6 +26,38 @@ MConHudKit.shared.initialize(appKey: "appkey") { error in
 }
 ```
 
+## Scan Device
+```ruby
+#ViewController.swift
+
+var list = [MConHudPeripheral]()
+override func viewDidLoad() {
+  super.viewDidLoad()
+  MConHudKit.shared.hudScanDelegate = self
+  MConHudKit.shared.startScanPeripheral(timeoutSec: 7)
+}
+
+extension ViewController: MConHudScanDelegate {
+    func scanPeripheral(peripherals: [MConHudPeripheral]) {
+        self.list = peripherals
+    }
+
+    func scanTimeOut() {
+        print("Scan Time out!")
+    }
+
+    func connectPeripheralResult(peripheral: MConHudPeripheral) {
+    }
+
+    func disconnectedPeripheral() {
+    }
+
+    func error(error: MConHudKitError) {
+        print(error)
+    }
+}
+```
+
 ## License
 
 MConHudKit is available under the MIT license. See the LICENSE file for more info.
