@@ -14,6 +14,15 @@ it, simply add the following line to your Podfile:
 pod 'MConHudKit'
 ```
 
+## Authorization
+
+Need Bluetooth Authorization
+Add in info.plist
+```ruby
+Privacy - Bluetooth Always Usage Description
+Privacy - Bluetooth Peripheral Usage Description
+```
+
 ## Auth
 
 ```ruby
