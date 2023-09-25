@@ -19,7 +19,7 @@ pod 'MConHudKit'
 ```ruby
 MConHudKit.shared.initialize(appKey: "appkey") { error in
   if let error = error {
-    print("authorization fail \(error
+    print("authorization fail \(error)")
     return
   }
   print("authorization success")
