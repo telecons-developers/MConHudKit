@@ -25,7 +25,7 @@ Privacy - Bluetooth Peripheral Usage Description
 
 ## Auth
 
-```ruby
+```swift
 MConHudKit.shared.initialize(appKey: "appkey") { error in
   if let error = error {
     print("authorization fail \(error)")
@@ -37,10 +37,11 @@ MConHudKit.shared.initialize(appKey: "appkey") { error in
 
 ## Scan Device
 ```swift
-#ViewController.swift
+// ViewController.swift
 class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
+    // Set Scan delegate
     MConHudKit.shared.hudScanDelegate = self
     // timeoutSec 후 Scanner가 자동 종료 됩니다.
     // timeoutSec에 nil을 전달하면 Scanner가 자동 종료 되지 않습니다.
@@ -60,14 +61,27 @@ extension ViewController: MConHudScanDelegate {
     func scanTimeOut() {
         print("Scan time out. Scan end.")
     }
-
-    func connectPeripheralResult(peripheral: MConHudPeripheral) {
+    func error(error: MConHudKitError) {
+        print(error)
     }
+}
+```
 
-    func disconnectedPeripheral() {
+## Connect Device
+```swift
+// peripheral is MConHudPeripheral
+MConHudKit.shared.connectPeripheral(peripheral: peripheral)
+```
+
+```swift
+// Connect Result
+extension ViewController: MConHudScanDelegate {
+    func connectPeripheralResult(peripheral: MConHudPeripheral) {
+        // Connect Success
     }
 
     func error(error: MConHudKitError) {
+        // Connect Fail
         print(error)
     }
 }
