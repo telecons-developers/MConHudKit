@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     // Set Scan delegate
     MConHudKit.shared.hudScanDelegate = self
-    // timeoutSec 후 Scanner가 자동 종료 됩니다.
+    // timeoutSec 후 Scanner가 자동 종료 됩니다.   test
     // timeoutSec에 nil을 전달하면 Scanner가 자동 종료 되지 않습니다.
     MConHudKit.shared.startScanPeripheral(timeoutSec: 7)
   }
