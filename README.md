@@ -103,6 +103,27 @@ extension ViewController: MConHudScanDelegate {
 }
 ```
 
+## Turn by turn Message
+
+```swift
+let turnByTurnCode: TurnByTurnCode = .straight
+// distance는 meter단위 입니다.
+let distance = 200
+MConHudKit.shared.sendTurnByTurnInfo(tbtCode: turnByTurnCode, distance: distance)
+```
+
+## Safety Message
+
+
+
+## Car Speed Message
+
+## Hud Brightness
+
+## Hud Buzzer
+
+## Firmware Update
+추 후 업데이트 예정입니다.
 
 ## License
 
