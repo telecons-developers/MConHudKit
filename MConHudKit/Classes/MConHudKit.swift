@@ -5,4 +5,7 @@ open class MConHudKit: NSObject {
     public func test() {
         print("test")
     }
+    public func checkBluetoothPermission() {
+        print("checkBluetoothPermission")
+    }
 }
