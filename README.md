@@ -43,8 +43,8 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     // Set Scan delegate
     MConHudKit.shared.hudScanDelegate = self
-    // timeoutSec 후 Scanner가 자동 종료 됩니다.   test
-    // timeoutSec에 nil을 전달하면 Scanner가 자동 종료 되지 않습니다.
+    // The Scanner will be automatically terminated after timeoutSec.
+    // The Scanner will NOT be terminated if you pass nil to timeoutSec.
     MConHudKit.shared.startScanPeripheral(timeoutSec: 7)
   }
 }
@@ -88,12 +88,12 @@ extension ViewController: MConHudScanDelegate {
 ```
 
 ## Bluetooth Disconnect Device
-HUD 디바이스의 전원을 Off시키거나 아래 코드를 호출하면 블루투스 연결이 해제됩니다.
+Bluetooth connection will be disconnected once turn off HUD device's power or call the following code. 
 ```swift
 MConHudKit.shared.disconnectPeripheral(peripheral: peripheral)
 ```
 
-연결이 해제되면 disconnectedPeripheral를 통해 연결 해제 신호를 받을 수 있습니다.
+You are to receive a disconnection signal through disconnectedPeripheral when the connection is terminated.
 ```swift
 extension ViewController: MConHudScanDelegate {
     func disconnectedPeripheral() {
@@ -105,7 +105,7 @@ extension ViewController: MConHudScanDelegate {
 ## Turn by turn Message
 ```swift
 let turnByTurnCode: TurnByTurnCode = .straight
-// distance는 meter단위 입니다.
+// distance unit is meter.
 let distance = 200
 MConHudKit.shared.sendTurnByTurnInfo(tbtCode: turnByTurnCode, distance: distance)
 ```
@@ -114,21 +114,21 @@ MConHudKit.shared.sendTurnByTurnInfo(tbtCode: turnByTurnCode, distance: distance
 ```swift
 let safetyCodes = [SafetyCode.camera]
 MConHudKit.shared.sendSafetyInfo(
-  safetyCodes: safetyCodes,    // 점등하고자 하는 카메라 타입을 Array형태로 전달해 주세요.
-  limitSpeed: nil,             // 해당 구간에 제한속도가 있다면 제한 속도를 Int로 전달해 주세요. nil일 경우 제한속도등을 Off 합니다.
-  remainDistance: 215,         // 남은거리 (m)
-  isOverSpeed: false           // 현재 차량이 과속 중일 경우 true로 전달해 주세요. Hud의 true일 경우 과속 경고 Buzzer가 재생 됩니다.
+  safetyCodes: safetyCodes,    // Provide the camera types which is to be flashed in the form of an array.  
+  limitSpeed: nil,             // If thee is a speed limit in the specific section, provide the speed limit as an integer,Int. if it is nil then speed restriction will be turned off..
+  remainDistance: 215,         // Remaining distance (m)
+  isOverSpeed: false           // If the current vehicle is speeding, pass 'true'. When HUD get 'true', it activates the speeding alert buzzer.
 )
 ```
 
-복수개의 안전운전등을 한번에 점등하고 싶으면 아래와 같이 safetyCodes에 Array 형태로 값을 전달해 주세요.
+If the multiple safety indicators are to be flashed at the same time, provide the value for safetyCode in the form of an arrray.
 ```swift
 let safetyCodes = [SafetyCode.camera, SafetyCode.signalCamera]
 MConHudKit.shared.sendSafetyInfo(
-  safetyCodes: safetyCodes,    // 점등하고자 하는 카메라 코드를 배열로 전달해 주세요.
-  limitSpeed: nil,             // 해당 구간에 제한속도가 있다면 제한 속도를 Int로 전달해 주세요. nil일 경우 제한속도등을 Off 합니다.
-  remainDistance: 215,         // 남은거리 (m)
-  isOverSpeed: false           // 현재 차량이 과속 중일 경우 true로 전달해 주세요. Hud의 true일 경우 과속 경고 Buzzer가 재생 됩니다.
+  safetyCodes: safetyCodes,    // Provide the camera types which is to be flashed in the form of an array.
+  limitSpeed: nil,             // If thee is a speed limit in the specific section, provide the speed limit as an integer,Int. if it is nil then speed restriction will be turned off.
+  remainDistance: 215,         // Remaining distance (m)
+  isOverSpeed: false           // If the current vehicle is speeding, pass 'true'. When HUD get 'true', it activates the speeding alert buzzer.
 )
 ```
 
@@ -140,13 +140,13 @@ MConHudKit.shared.sendCarSpeed(carSpeedCode: .gpsSpeed, speed: speed)
 ```
 
 ## Hud Brightness
-Hud 밝기 변경
+Change the brightness of HUD
 ```swift
 // has a low, medium, high
 let brightnessLevel: BrightnessLevel = .low
 MConHudKit.shared.sendHudBrightnessLevel(brightnessLevel: brightnessLevel)
 ```
-현재 Hud의 밝기 정보 조회
+Fetch the current status information for HUD's brightness status.
 ```swift
 class ViewController: UIViewController {
   override func viewDidLoad() {
@@ -167,14 +167,14 @@ extension ViewController: MConHudDelegate {
 ```
 
 ## Hud Buzzer
-Hud 비프음 크기 변경
+Change the beep sound volume of HUD.
 ```swift
 // has a mute, low, medium, high
 let buzzerLevel: BuzzerLevel = .low
 MConHudKit.shared.sendHudBuzzerLevel(buzzerLevel: buzzerLevel)
 ```
-현재 Hud의 Buzzer Status 정보 조회
-Buzzer는 low, medium, high정보를 조회할 수 없으며 on/off여부만 확인할 수 있습니다.
+Fetch the current status information for HUD's buzzer status.
+Do NOT retrive the buzzer information in low, medium, or high but only obtain on/off status.
 ```swift
 class ViewController: UIViewController {
   override func viewDidLoad() {
@@ -195,8 +195,8 @@ extension ViewController: MConHudDelegate {
 ```
 
 ## Firmware Update
-추 후 업데이트 예정입니다.
+To be updated.
 
 ## License
-없음.
-필요 시 업데이트.
+N/A.
+Update if needed.
